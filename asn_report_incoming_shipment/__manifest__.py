@@ -1,7 +1,7 @@
 {
 	"name"			: "Report Incoming Shipment",
 	"version"		: "10.0",
-	"author"		: "ajeng039e@gmail.com",
+	"author"		: "Ajeng Shilvie N / ajeng039e@gmail.com",
 	"category"		: "Report",
 	'website'		: '',
 	"description"	: """\
