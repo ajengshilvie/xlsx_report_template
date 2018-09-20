@@ -1,7 +1,7 @@
 {
     "name"          :"Xlsx Report Template",
     "version"       :"1.0",
-    "author"        :"Ajeng Shilvie",
+    "author"        :"ajeng039e@gmail.com",
     "category"      :"Report",
     "summary"       :"xlsx Template",
     "description"   :"""A base template for creating xlsx with easier way.
