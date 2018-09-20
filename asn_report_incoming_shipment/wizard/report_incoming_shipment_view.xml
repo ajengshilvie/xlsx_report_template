@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+    <record id="view_asn_incoming_shipment" model="ir.ui.view">
+		<field name="name">Report Incoming Shipment</field>
+		<field name="model">asn.report.incoming.shipment</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			
+	        <form string="Report Incoming Shipment">
+				<field invisible="1" name="state_x"/>
+				<group attrs="{'invisible':[('state_x','!=','get')]}">
+						<separator colspan="4" string="Generate report has completed, download link below... " attrs="{'invisible':[('state_x','=','choose')]}"/>
+							<field name="name" invisible="1" width="100" attrs="{'invisible':[('state_x','=','choose')]}"/>
+							<field name="data_x" nolabel="1" readonly="0" width="100" filename="name" attrs="{'invisible':[('state_x','=','choose')]}"/>
+					</group>
+				<group>
+					<group>
+						<field name="product_ids" options="{'no_create':1,'no_open':1}"  widget="many2many_tags"/>
+						<label for="start_date" string="Tanggal"/>
+						<div>
+							<field name="start_date" required="0" class="oe_inline"/> s/d <field name="end_date" class="oe_inline"/>
+						</div>
+					</group>
+					<group>
+						<field name="categ_id" options="{'no_create':1,'no_open':1}"/>
+					</group>
+				</group>
+				<newline/>
+				<footer>
+					<button name="excel_report" attrs="{'invisible':[('state_x','=','get')]}" string="Export Report" type="object" class="oe_highlight"/>
+					<label string="or  . " attrs="{'invisible':[('state_x','=','get')]}" />
+					<button string="Cancel" attrs="{'invisible':[('state_x','=','get')]}" class="oe_link" special="cancel" />
+				</footer>
+	        </form>
+	        
+    	</field>
+    </record>
+	
+    <record id="action_report_incoming_shipment" model="ir.actions.act_window">
+		<field name="name">Report Incoming Shipment</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">asn.report.incoming.shipment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_asn_incoming_shipment"/>
+		<field name="target">new</field>
+    </record>
+
+	<menuitem id="menuitem_report_stock"
+			  action="action_report_incoming_shipment"
+			  parent="stock.menu_warehouse_report" sequence="100"/>
+
+	</data>
+</odoo>
